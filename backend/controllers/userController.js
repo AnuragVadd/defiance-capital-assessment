@@ -16,7 +16,9 @@ const loginUser = async (req, res) => {
     const isMatch = await bcrypt.compare(password, user.password);
 
     if (!isMatch) {
-      return res.json({ success: false, message: "Invalid credentials" });
+      return res
+        .status(401)
+        .json({ success: false, message: "Invalid credentials" });
     }
 
     const token = createToken(user._id);
@@ -38,16 +40,24 @@ const registerUser = async (req, res) => {
     // checking if user already exists
     const exists = await userModel.findOne({ email });
     if (exists) {
-      return res.json({ success: false, message: "User already exists" });
+      return res
+        .status(401)
+        .json({ success: false, message: "User already exists" });
     }
 
     // validating email format and password
     if (!validator.isEmail(email)) {
-      return res.json({ success: false, message: "Please enter a valid email" });
+      return res.json({
+        success: false,
+        message: "Please enter a valid email",
+      });
     }
 
     if (password.length < 8) {
-      return res.json({ success: false, message: "Please enter a strong password" });
+      return res.json({
+        success: false,
+        message: "Please enter a strong password",
+      });
     }
 
     // hashing user password
