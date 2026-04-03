@@ -12,7 +12,7 @@ const FoodItem = ({ id, name, price, description, image }) => {
       <div className="food-item-img-container">
         <img
           className="food-item-image"
-          // src={url+'/images/'+image}
+          //   src={url + "/images/" + image}
           src={
             "https://images.openai.com/static-rsc-4/SntiNdj3hpG4Wv9IsYwLOiSP35R7A9e1U1q2nxkhVjD-z_49Ls4jf6D7hSok4GwBw_RWxMUN2TFxbYY7kBsSas89E_f2HZ6UCsK5WG6S-ANfN_RaNmvPucj0S0AcHCRnpznhPYmumRZLcu44F9GjilWy8I0eI5xltBiVdnxtZOXhFIHZzmT0hMgek6wPTUUs?purpose=inline"
           }
